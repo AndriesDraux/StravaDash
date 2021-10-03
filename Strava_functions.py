@@ -439,4 +439,5 @@ def get_strava_activities(user_id):
     return cart
 
 
+update_strava_activity("12210119")
 
