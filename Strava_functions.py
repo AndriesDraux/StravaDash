@@ -14,6 +14,7 @@ class ConnectToDB:
     # Initialize an object of the class
     def __init__(self):
         self.status = "Not Connected"
+        self.conn_string = ""
         self.conn = None
         self.cur = None
         self.query_result = None
@@ -22,7 +23,7 @@ class ConnectToDB:
 
         """ Method to connect the object to the postGRE Strava Database"""
 
-        with open('strava_DB_config.json', 'r') as configfile:
+        with open('neon_DB_config.json', 'r') as configfile:
             db_config_params = json.load(configfile)
 
         try:
@@ -31,6 +32,8 @@ class ConnectToDB:
 
             # Connect to the PostGRE SQL - Strava database
             self.conn = psycopg2.connect(**strava_config_params)
+
+            self.conn_string = self.conn.info
 
             # Create a cursor to execute SQL commands
             self.cur = self.conn.cursor()
@@ -439,5 +442,12 @@ def get_strava_activities(user_id):
     return cart
 
 
+# Make an object from the ConnectToDB class
+# conn_obj = ConnectToDB()
+
+# Initialize the connection to the database
+# conn_obj.initialize_connection()
+
+# print(conn_obj.conn_string)
 update_strava_activity("12210119")
 
