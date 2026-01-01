@@ -442,12 +442,4 @@ def get_strava_activities(user_id):
     return cart
 
 
-# Make an object from the ConnectToDB class
-# conn_obj = ConnectToDB()
-
-# Initialize the connection to the database
-# conn_obj.initialize_connection()
-
-# print(conn_obj.conn_string)
-update_strava_activity("12210119")
 
